@@ -1,15 +1,34 @@
-﻿"Lab3.exe" (Win32). Загружено "C:\Users\user\source\repos\ConsoleApplication9\Debug\Lab3.exe". Символы загружены.
-"Lab3.exe" (Win32). Загружено "C:\Windows\SysWOW64\ntdll.dll". 
-"Lab3.exe" (Win32). Загружено "C:\Windows\SysWOW64\kernel32.dll". 
-"Lab3.exe" (Win32). Загружено "C:\Windows\SysWOW64\KernelBase.dll". 
-"Lab3.exe" (Win32). Загружено "C:\Program Files\Avast Software\Avast\x86\aswhook.dll". 
-"Lab3.exe" (Win32). Загружено "C:\Windows\SysWOW64\vcruntime140d.dll". 
-"Lab3.exe" (Win32). Загружено "C:\Windows\SysWOW64\ucrtbased.dll". 
-"Lab3.exe" (Win32). Загружено "C:\Windows\SysWOW64\api-ms-win-core-localization-l1-2-0.dll". 
-"Lab3.exe" (Win32). Загружено "C:\Windows\SysWOW64\api-ms-win-core-processthreads-l1-1-1.dll". 
-"Lab3.exe" (Win32). Загружено "C:\Windows\SysWOW64\api-ms-win-core-file-l1-2-0.dll". 
-"Lab3.exe" (Win32). Загружено "C:\Windows\SysWOW64\api-ms-win-core-timezone-l1-1-0.dll". 
-"Lab3.exe" (Win32). Загружено "C:\Windows\SysWOW64\api-ms-win-core-file-l2-1-0.dll". 
-"Lab3.exe" (Win32). Загружено "C:\Windows\SysWOW64\api-ms-win-core-synch-l1-2-0.dll". 
-Поток 0xf3c завершился с кодом 0 (0x0).
-Программа "[10460] Lab3.exe" завершилась с кодом 0 (0x0).
+#include <stdio.h>
+#define A 9
+
+int main()
+{
+    int Q[A][A];
+    int i, j, k, d, m = A * A;
+    for (k = 0; k < A / 2;k++) 
+    {
+        d = A - 1 - k;
+        for (j = k;j < d;j++, m--)
+            Q[k][j] = m;
+        for (i = k;i < d;i++, m--)
+            Q[i][d] = m;
+        for (j = d;j > k;j--, m--)
+            Q[d][j] = m;
+        for (i = d;i > k;i--, m--)
+            Q[i][k] = m;
+    }
+
+    if (A % 2)
+        Q[A / 2][A / 2] = m;
+
+
+    for (i = 0;i < A;i++)
+    {
+        for (j = 0;j < A;j++) printf("%6d", Q[i][j]);
+        printf("\n");
+    }
+
+
+    return 0;
+}
+
